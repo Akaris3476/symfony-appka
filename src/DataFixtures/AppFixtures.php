@@ -21,6 +21,7 @@ class AppFixtures extends Fixture
             Illum perspiciatis molestias similique obcaecati voluptatibus iure, sed ipsa quisquam quae?
         ');
         $article->setTitle('Lorem ipsum article');
+        $article->setDateAdded(new \DateTime('07.02.2025'));
 
         $manager->persist($article);
 
@@ -35,6 +36,7 @@ class AppFixtures extends Fixture
             Mauris sit amet nunc risus. In hac habitasse platea dictumst. 
         ');
         $article1->setTitle('Another Lorem article');
+        $article1->setDateAdded(new \DateTime('07.02.2025'));
 
         $manager->persist($article1);
         

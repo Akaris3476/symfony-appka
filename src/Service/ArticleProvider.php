@@ -13,7 +13,6 @@ class ArticleProvider {
                 'title' => $article->getTitle(),
                 #'content' => substr($article->getContent(), 0, 80) . '...',
                 'content' => $article->getContent(),
-                'link' => '/article/' .$article->getId()
             ];
         }
 

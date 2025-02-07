@@ -28,11 +28,29 @@ class UserRepository extends ServiceEntityRepository implements PasswordUpgrader
             throw new UnsupportedUserException(sprintf('Instances of "%s" are not supported.', $user::class));
         }
 
+        
         $user->setPassword($newHashedPassword);
         $this->getEntityManager()->persist($user);
         $this->getEntityManager()->flush();
     }
+    public function add(User $user)
+    {
+        if (!$user instanceof User) {
+            throw new UnsupportedUserException(sprintf('Instances of "%s" are not supported.', $user::class));
+        }
 
+        $this->getEntityManager()->persist($user);
+        $this->getEntityManager()->flush();
+    }
+
+    public function remove(User $user){
+        if (!$user instanceof User) {
+            throw new UnsupportedUserException(sprintf('Instances of "%s" are not supported.', $user::class));
+        }
+
+        $this->getEntityManager()->remove($user);
+        $this->getEntityManager()->flush();
+    }
     //    /**
     //     * @return User[] Returns an array of User objects
     //     */
