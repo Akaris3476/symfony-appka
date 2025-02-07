@@ -43,6 +43,8 @@ class CreateUserCommand extends Command {
         $user->setEmail($email);
 
         $hashedPassword = $this->passwordHasher->hashPassword($user, $password);
+        $user->setPassword($hashedPassword);
+        
         $this->entityManager->persist($user);
         $this->entityManager->flush();
 
