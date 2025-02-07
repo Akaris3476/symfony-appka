@@ -1,0 +1,13 @@
+{# templates/articles/articles.html.twig #}
+
+<h1>Articles</h1>
+
+<ul>
+    {% for article in articles %}
+        <li>
+            <strong>{{ article.title }}</strong>
+            <p>{{ article.content }}</p>
+            <a href="{{ article.link }}">Read more</a>
+        </li>
+    {% endfor %}
+</ul>
