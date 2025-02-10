@@ -5,6 +5,7 @@ declare(strict_types=1);
 namespace App\Controller;
 
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
+use App\Exception\UserNotFoundException;
 use Symfony\Component\HttpFoundation\JsonResponse;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Attribute\Route;
@@ -58,6 +59,10 @@ class UserController extends AbstractController {
     public function show(int $id){
         $user = $this->userRepository->findOneBy(['id' => $id]);
 
+        if(!$user) {
+            throw new UserNotFoundException();
+        }
+
         return $this->apiResponseFormatter
             ->withData((array) $user)
             ->response();
@@ -88,6 +93,10 @@ class UserController extends AbstractController {
     {
         $user = $this->userRepository->findOneBy(['id' => $id]);
 
+        if(!$user) {
+            throw new UserNotFoundException();
+        }
+        
         $newUserInfo = json_decode($request->getContent(), true);
         
         $user->setEmail($newUserInfo['email']);
