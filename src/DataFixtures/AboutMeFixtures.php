@@ -16,9 +16,9 @@ class AboutMeFixtures extends Fixture
         $manager->persist($AboutMe);
 
         $AboutMe = new InformationAboutMe();
-        $manager->persist($AboutMe);
         $AboutMe->setKey('age');
         $AboutMe->setValue('18');
+        $manager->persist($AboutMe);
 
         $AboutMe = new InformationAboutMe();
         $AboutMe->setKey('heigth');
